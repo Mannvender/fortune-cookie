@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { LoaderContext } from "../contexts/loaderContext";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../components/TextInput";
+import { callSignupApi } from "../apis/auth";
 import {
   ERRORS,
   validateEmail,
@@ -74,8 +75,19 @@ function Signup() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    // Replace with actual API call
-    console.log("Signup API called with payload:", signupApiPayload);
+    callSignupApi(signupApiPayload)
+      .then((response) => {
+        // Handle successful signup
+        navigate("/login");
+      })
+      .catch((error) => {
+        // Handle signup error
+        console.error("Signup error:", error);
+      });
+  };
+
+  const handleLoginRedirect = () => {
+    navigate("/login");
   };
 
   return (
@@ -128,6 +140,15 @@ function Signup() {
               Sign up
             </button>
           </div>
+          <p className="mt-10 text-center text-sm text-gray-500">
+            Already have an account?{" "}
+            <button
+              onClick={handleLoginRedirect}
+              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >
+              Log in
+            </button>
+          </p>
         </form>
       </div>
     </div>

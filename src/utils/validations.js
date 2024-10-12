@@ -1,8 +1,9 @@
 export const ERRORS = {
+  // messages should suggest what the user should do to fix the error
   invalid: {
-    email: "Invalid email",
-    password: "Invalid password",
-    name: "Name is required",
+    email: "Email must be in format: <name>@<domain>.<tld>",
+    password: "Password must be at least 6 characters long",
+    name: "Name cannot be empty",
   },
 };
 

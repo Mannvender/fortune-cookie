@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./login/Login.js";
 import Signup from "./signup/Signup.js";
+import Dashboard from "./dashboard/Dashboard.js";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
