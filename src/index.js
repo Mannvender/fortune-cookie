@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./output.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { LoaderContextProvider } from "./contexts/loader";
+import { LoaderContextProvider } from "./contexts/loaderContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
