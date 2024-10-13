@@ -5,6 +5,7 @@ import Groups from "./groups/Groups.js";
 import AddressNotFound from "./404/AddressNotFound.js";
 import LandingLayout from "./layouts/LandingLayout";
 import MainLayout from "./layouts/MainLayout";
+import IndividualGroup from "./groups/IndividualGroup.js";
 
 function App() {
   return (
@@ -46,6 +47,15 @@ function App() {
             <MainLayout>
               <Groups />
             </MainLayout>
+          }
+        />
+        <Route
+          exact
+          path="/groups/:groupId"
+          element={
+            <LandingLayout bgColor="bg-gray-800">
+              <IndividualGroup />
+            </LandingLayout>
           }
         />
         <Route

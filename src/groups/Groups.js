@@ -1,16 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import {
-  UsersIcon,
-  UserGroupIcon,
-  ChartBarIcon,
-  PlusCircleIcon,
-  UserPlusIcon,
-} from "@heroicons/react/24/outline"; // Importing icons from @heroicons/react v2
+import { UserPlusIcon } from "@heroicons/react/24/outline"; // Importing icons from @heroicons/react v2
 import { UserContext } from "../contexts/userContext";
 import useFetchGroups from "../customHooks/useFetchGroups";
 import useFetchLoggedInUser from "../customHooks/useFetchLoggedInUser";
+import GroupCard from "./GroupCard"; // Importing GroupCard component
 
-function Dashboard() {
+function Groups() {
   const { user } = useContext(UserContext);
   const { groups } = useFetchGroups(user?.id);
   const { error: userError } = useFetchLoggedInUser();
@@ -38,23 +33,7 @@ function Dashboard() {
               <span className="text-base mt-2">Create New Group</span>
             </div>
             {groups.map((group) => (
-              <div key={group.id} className="bg-gray-700 shadow-md p-4">
-                <h3 className="text-xl font-semibold">{group.name}</h3>
-                <hr className="my-2 border-gray-600" />
-                <div className="flex justify-between text-sm">
-                  <div>
-                    <p className="text-xs text-gray-400">You Owe</p>
-                    <p>500</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400">Total Members</p>
-                    <p>{group.memberIds?.length}</p>
-                  </div>
-                </div>
-                <button className="mt-4 w-full border-2 border-blue-500 py-2 px-4">
-                  Action
-                </button>
-              </div>
+              <GroupCard key={group.id} group={group} />
             ))}
           </div>
         </div>
@@ -63,4 +42,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Groups;
