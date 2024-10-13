@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoaderContext } from "../contexts/loaderContext";
+import { UserContext } from "../contexts/userContext";
 import { callLoginApi } from "../apis/auth";
 import TextInput from "../components/TextInput";
 import { ERRORS, validateEmail, validatePassword } from "../utils/validations";
@@ -10,6 +11,8 @@ function Login() {
   const navigate = useNavigate();
   // contexts
   const { setLoading } = useContext(LoaderContext);
+  const { userDetails, saveUserDetails } = useContext(UserContext);
+  console.log(userDetails, " ---------userDetails");
   // states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,6 +58,9 @@ function Login() {
     setLoading(true);
     callLoginApi(loginApiPayload)
       .then((response) => {
+        console.log(response, " ---------response");
+        const user = { ...response?.data };
+        saveUserDetails(user);
         setLoading(false);
         // Handle successful login
         navigate("/dashboard");
