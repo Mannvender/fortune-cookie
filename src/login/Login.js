@@ -60,7 +60,7 @@ function Login() {
       .then((response) => {
         setLoading(false);
         // Handle successful login
-        navigate("/dashboard");
+        navigate("/groups");
       })
       .catch((error) => {
         setLoading(false);

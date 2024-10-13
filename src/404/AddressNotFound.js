@@ -5,7 +5,7 @@ function AddressNotFound() {
   const navigate = useNavigate();
 
   const handleGoBackHome = () => {
-    navigate("/dashboard");
+    navigate("/groups");
   };
 
   return (

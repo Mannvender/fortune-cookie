@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./login/Login.js";
 import Signup from "./signup/Signup.js";
-import Dashboard from "./dashboard/Dashboard.js";
+import Groups from "./groups/Groups.js";
 import AddressNotFound from "./404/AddressNotFound.js";
 import LandingLayout from "./layouts/LandingLayout";
 import MainLayout from "./layouts/MainLayout";
@@ -41,17 +41,17 @@ function App() {
         />
         <Route
           exact
-          path="/dashboard"
+          path="/groups"
           element={
             <MainLayout>
-              <Dashboard />
+              <Groups />
             </MainLayout>
           }
         />
         <Route
           path="*"
           element={
-            <LandingLayout bgColor="bg-red-600">
+            <LandingLayout bgColor="">
               <AddressNotFound />
             </LandingLayout>
           }
