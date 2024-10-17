@@ -21,11 +21,12 @@ const GroupCard = ({ group }) => {
         </div>
         <div>
           <p className="text-xs text-gray-400">Total Members</p>
-          <p>{group.memberIds?.length}</p>
+          <p>{group.members?.length + group.admins?.length}</p>
         </div>
       </div>
       <button
-        className="mt-4 w-full border-2 py-2 px-4"
+        className="mt-4 w-full border-2 
+        y-2 px-4"
         onClick={(e) => e.stopPropagation()}
       >
         Settle Up
